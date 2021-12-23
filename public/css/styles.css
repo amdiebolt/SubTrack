@@ -1,0 +1,14 @@
+header { 
+  background: #000;
+  height: 150px;
+  padding-top: 25px;
+}
+.btn >a { 
+  color: #fff;
+}
+.btn.btn-primary { 
+  margin: 4px;
+}
+h1 { 
+  color:#fff;
+}
