@@ -1,0 +1,9 @@
+{{#each data}}
+<div class="card">
+  <h5 class="card-header">{{title}}</h5>
+  <div class="card-body">
+    <h5 class="card-title">Author:{{user.name}} || Created: {{timeConvert createdAt}}</h5>
+    <p class="card-text">{{content}}</p>
+  </div>
+</div>
+{{/each}}

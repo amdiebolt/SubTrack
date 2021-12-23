@@ -1,20 +1,20 @@
 const router = require('express').Router();
-const { User, Sub } = require('../models');
+const { User, Blog } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
     let logged_in = req.session.logged_in
 
-    let data = await Sub.findAll({
+    let data = await Blog.findAll({
       include:[
         {model: User, as :"user"}
       ]
     })
 
-    let subscriptionData = data.map(sub=> sub.get({plain:true}))
+    let serializedData = data.map(blog=> blog.get({plain:true}))
 
-   res.render("sub", {data:subscriptionData, logged_in})
+   res.render("blog", {data:serializedData, logged_in})
   } catch (err) {
     res.status(500).json(err);
   }
@@ -30,6 +30,7 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/newuser', (req,res)=>{
+  console.log("kjshdkjshd")
   res.render('newAccount')
 })
 
