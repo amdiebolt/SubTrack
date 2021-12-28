@@ -12,29 +12,38 @@ router.get('/', async (req, res) => {
       ]
     })
 
-    let serializedData = data.map(blog=> blog.get({plain:true}))
-
-   res.render("blog", {data:serializedData, logged_in})
+   res.render("homepage", {logged_in})
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
 router.get('/login', (req, res) => {
+  let logged_in = req.session.logged_in
   if (req.session.logged_in) {
     res.redirect('/');
     return;
   }
 
-  res.render('login');
+  res.render('login', {logged_in});
 });
 
 router.get('/newuser', (req,res)=>{
-  console.log("kjshdkjshd")
   res.render('newAccount')
 })
 
 router.get('/dashboard', withAuth, (req, res)=>{ 
   res.render("dashboard")
 })
+router.get('/subs', (req,res)=>{
+  let logged_in = req.session.logged_in
+  if (req.session.logged_in){
+  res.render('subs', {logged_in});
+  return;}
+  else{
+    res.redirect('/login')
+  }
+})
+
+
 module.exports = router;

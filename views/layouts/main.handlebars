@@ -11,16 +11,16 @@
 
 <body class="container">
   <header>
-    <nav class="nav">
-      <button class="btn btn-primary"><a class="nav-link active" aria-current="page" href="#">Home</a></button>
-      <button class="btn btn-primary"><a class="nav-link active" aria-current="page" href="/dashboard">Dashboard</a></button>
-    {{#if logged_in}}
-     <button class="btn btn-primary" id="logout"><a class="nav-link active" aria-current="page" href="#">Logout</a></button>
-    {{else}}
-      <button class="btn btn-primary"><a class="nav-link active" aria-current="page" href="#">Login</a></button>
-    {{/if}}
-    </nav>
-    <h1>The Tech Blog</h1>
+  <nav class = "nav">
+  <button class= "btn btn-primary"><a class="nav-link active" aria-current="page" href="/">Home</a></button>
+  <button class= "btn btn-primary"><a class="nav-link active" aria-current="page" href="/subs">Subscriptions</a></button>
+  {{#if logged_in}}
+ <button class= "btn btn-primary"  id="logout"><a class="nav-link active" aria-current="page" href="/login">Logout</a></button>
+  {{else}}
+   <button class= "btn btn-primary" id="login"><a class="nav-link active" aria-current="page" href="login">Login</a></button>
+     {{/if}}
+  </nav>
+    <h1>SubTrack!</h1>
   </header>
   <main class="container container-fluid mt-5">
     {{{ body }}}
