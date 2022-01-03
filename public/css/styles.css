@@ -1,8 +1,4 @@
-header { 
-  background: #000;
-  height: 150px;
-  padding-top: 25px;
-}
+
 .btn >a { 
   color: #fff;
 }
@@ -11,4 +7,16 @@ header {
 }
 h1 { 
   color:rgb(10, 10, 10);
+}
+
+body{
+  background-color: rgb(184, 184, 184);
+}
+
+#email-login{
+  max-width: 300px;
+}
+
+#password-login{
+  max-width: 300px;
 }

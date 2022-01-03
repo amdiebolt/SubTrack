@@ -1,12 +1,12 @@
 const router = require('express').Router();
-const { User, Blog } = require('../models');
+const { User, Sub} = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
     let logged_in = req.session.logged_in
 
-    let data = await Blog.findAll({
+    let data = await Sub.findAll({
       include:[
         {model: User, as :"user"}
       ]
@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
 router.get('/login', (req, res) => {
   let logged_in = req.session.logged_in
   if (req.session.logged_in) {
-    res.redirect('/');
+    res.redirect('subs');
     return;
   }
 
@@ -32,10 +32,8 @@ router.get('/newuser', (req,res)=>{
   res.render('newAccount')
 })
 
-router.get('/dashboard', withAuth, (req, res)=>{ 
-  res.render("dashboard")
-})
-router.get('/subs', (req,res)=>{
+
+router.get('/subs', withAuth, (req,res)=>{
   let logged_in = req.session.logged_in
   if (req.session.logged_in){
   res.render('subs', {logged_in});
@@ -44,6 +42,8 @@ router.get('/subs', (req,res)=>{
     res.redirect('/login')
   }
 })
-
+router.get('/dashboard', withAuth, (req, res)=>{ 
+  res.render("dashboard")
+})
 
 module.exports = router;
