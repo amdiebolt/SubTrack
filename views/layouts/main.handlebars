@@ -9,19 +9,21 @@
   <link rel="stylesheet" href="/css/styles.css">
 </head>
 
-<body class="container">
-  <header>
-    <nav class="nav">
-      <button class="btn btn-primary"><a class="nav-link active" aria-current="page" href="#">Home</a></button>
-      <button class="btn btn-primary"><a class="nav-link active" aria-current="page" href="/dashboard">Dashboard</a></button>
-    {{#if logged_in}}
-     <button class="btn btn-primary" id="logout"><a class="nav-link active" aria-current="page" href="#">Logout</a></button>
+<body>
+  <div class="container">
+ <header class="bg-dark d-flex text-white justify-content-center py-3">
+      <ul class="nav nav pills">
+          <li><a href="/" class="nav-link px-2 text-white">Home</a></li>
+          <li><a href="/subs" class="nav-link px-2 text-white">Subscriptions</a></li>
+           {{#if logged_in}}
+      <li><a href="#" id='logout' class="nav-link px-2 text-white">Logout</a></li>
     {{else}}
-      <button class="btn btn-primary"><a class="nav-link active" aria-current="page" href="#">Login</a></button>
+      <li><a href="/login" class="nav-link px-2 text-white">Login</a></li>
     {{/if}}
-    </nav>
-    <h1>The Tech Blog</h1>
+        </ul>
+
   </header>
+  </div>
   <main class="container container-fluid mt-5">
     {{{ body }}}
     
@@ -36,3 +38,5 @@
 </body>
 
 </html>
+
+
