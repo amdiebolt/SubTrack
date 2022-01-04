@@ -1,10 +1,11 @@
 {
   
-  "name": "user-list",
+   "name": "myapp",
+  "description": "a really cool app",
   "version": "1.0.0",
-  "description": "",
   "engines": {
-    "node": "6.11.1"
+    "node": "14.x"
+  }
   },
   "main": "server.js",
   "scripts": {
