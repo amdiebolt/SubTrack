@@ -1,20 +1,20 @@
 const router = require('express').Router();
-const { User, Blog } = require('../models');
+const { User, Sub } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
     let logged_in = req.session.logged_in
 
-    let data = await Blog.findAll({
+    let data = await Sub.findAll({
       include:[
         {model: User, as :"user"}
       ]
     })
 
-    let serializedData = data.map(blog=> blog.get({plain:true}))
+    let serializedData = data.map(sub=> sub.get({plain:true}))
 
-   res.render("blog", {data:serializedData, logged_in})
+   res.render("sub", {data:serializedData, logged_in})
   } catch (err) {
     res.status(500).json(err);
   }
