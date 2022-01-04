@@ -1,8 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+const CronJob = require('cron').CronJob;
 
-class Sub extends Model {
-}
+
+class Sub extends Model { }
 
 Sub.init(
   {
@@ -33,12 +34,28 @@ Sub.init(
     },
   },
   {
-    sequelize,
+    hooks: {
+      afterCreate: async function (newSub) {
+        await new CronJob(`15 14 ${newSub.dayofmonth} * *`, function () {
+          const d = new Date();
+          console.log('Every month your sub will renew:', d)
+        })
+
+        return newSub;
+      },
+    },
+
+  
+  sequelize,
     timestamps: true,
     freezeTableName: true,
     underscored: true,
-    modelName: 'sub',
-  }
+    modelName: 'Sub',
+  },
 );
 
+console.log('new something')
+
 module.exports = Sub;
+
+// feature/subscription-countdown-renewal
