@@ -9,7 +9,7 @@
    "engines": {
   
      
-   "node": "16.3.0"
+   "node": "14.3.0"
   
    },
   
@@ -37,7 +37,7 @@
    "dependencies": {
   
      
-   "bcrypt-nodejs": "^0.0.3",
+   "bcryptjs": "^2.4.3",
   
      
    "connect-session-sequelize": "^7.0.4",
