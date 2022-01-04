@@ -5,8 +5,9 @@
    "description": "a really cool app",
   
    "version": "1.0.0",
-   "engines": { "node": "12.16.1", 
-    "npm": "6.14.4" },
+   "engines": {
+    "node": "16.3.0"
+  },
   
    "main": "server.js",
   
