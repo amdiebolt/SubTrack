@@ -1,8 +1,49 @@
-{{#each data}}
-<div class="card">
-  <h5 class="card-header">{{company}}</h5>
+<form id="newuser">
+  <div class="row mb-4">
+     <label for="companies">Choose a company:</label>
+    <div class="col-sm-6">
+<select id="comapny" name="companies">
+    <option value="Netflix">Netflix</option>
+    <option value="Hulu">Hulu</option>
+    <option value="HBO">HBO Max</option>
+    <option value="Apple">Apple TV</option>
+    <option value="Amazon">Amazon Prime</option>
+    <option value="Peacock">Peacock</option>
+    <option value="Disney">Disney+</option>
+    <option value="Youtube">Youtube</option>
+    <option value="Crunchyroll">Crunchyroll</option>
+    <option value="Spotify">Spotify</option>
+</select>
+    </div>
+  </div>
+    <div class="row mb-4">
+    <label for="inputCost" class="col-sm-2 col-form-label">How much do you spend on this subscription?</label>
+    <div class="col-sm-6">
+      <input type="number" step=".01" class="form-control" id="inputCost">
+    </div>
+  </div>
+  <div class="row mb-4">
+    <label for="inputDate" class="col-sm-2 col-form-label">What day of the month does the subscription renew?</label>
+    <div class="col-sm-6">
+      <input type="number" class="form-control" id="inputDate">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Add subscription</button>
+</form>
+
+
+{{#each subs}}
+<div class="card" id="subcard">
+  <h5 class="card-header font-weight-bold">{{company}}</h5>
   <div class="card-body">
-    <h5 class="card-title">Renews:{{paydate}} || Time until next payment: {{timeConvert createdAt}}</h5>
+    <h5 class="card-title">Renews on the {{dayofmonth}}th of each month || Cost per month: ${{cost}}</h5> 
+    <button type="button" class="btn btn-danger" id="remove">Remove Subscription</button>
   </div>
 </div>
 {{/each}}
+
+<div id="total">
+    <h5 class="col-sm-6">Total per month: ${{summed}}</h5>
+</div>
+
+<script src="./js/postsub.js"></script>
