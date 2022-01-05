@@ -3,7 +3,7 @@ console.log("on posting JS")
 const form = document.querySelector("#newuser")
 const subcard = document.querySelector("#subcard")
 const remove = document.querySelector("#remove")
-console.log(form)
+const sum = document.querySelector("sum")
 
 form.addEventListener("submit", (e)=> { 
   e.preventDefault();
@@ -26,11 +26,12 @@ form.addEventListener("submit", (e)=> {
   form[0].value = ""
   form[1].value = ""
   form[2].value = ""
-
 })
 
 function deletesub() {
   subcard.remove()
-}
+ }
+ 
+ remove.addEventListener("click", deletesub())
 
-remove.addEventListener("click", deletesub())
+
