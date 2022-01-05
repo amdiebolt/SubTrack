@@ -7,12 +7,12 @@ router.get('/', async (req, res) => {
     let logged_in = req.session.logged_in
 
     let data = await Sub.findAll({
-      include:[
-        {model: User, as :"user"}
+      include: [
+        { model: User, as: "user" }
       ]
     })
 
-   res.render("homepage", {logged_in})
+    res.render("homepage", { logged_in })
   } catch (err) {
     res.status(500).json(err);
   }
@@ -25,24 +25,34 @@ router.get('/login', (req, res) => {
     return;
   }
 
-  res.render('login', {logged_in});
+  res.render('login', { logged_in });
 });
 
-router.get('/newuser', (req,res)=>{
+router.get('/newuser', (req, res) => {
   res.render('newAccount')
 })
 
 
-router.get('/subs', withAuth, (req,res)=>{
+router.get('/subs', withAuth, async (req, res) => {
   let logged_in = req.session.logged_in
-  if (req.session.logged_in){
-  res.render('subs', {logged_in});
-  return;}
-  else{
+  if (req.session.logged_in) {
+    let data = await Sub.findAll({
+      include: [
+        { model: User, as: "user" }
+      ]
+
+    })
+    
+    const subs = data.map((sub) => sub.get({ plain: true }))
+    // console.log(subs)
+    res.render('subs', { logged_in, subs });
+    return;
+  }
+  else {
     res.redirect('/login')
   }
 })
-router.get('/dashboard', withAuth, (req, res)=>{ 
+router.get('/dashboard', withAuth, (req, res) => {
   res.render("dashboard")
 })
 
