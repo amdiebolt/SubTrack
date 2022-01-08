@@ -6,7 +6,7 @@ router.get('/', async (req, res) => {
   try {
     let logged_in = req.session.logged_in
 
-    let data = await Sub.find({
+    let data = await Sub.findAll({
       include: [
         { model: User, as: "user" }
       ]
