@@ -35,19 +35,16 @@ router.get('/newuser', (req, res) => {
 
 router.get('/subs', withAuth, async (req, res) => {
   let logged_in = req.session.logged_in
-  let user_id = req.session.user_id
   if (req.session.logged_in) {
     let data = await Sub.findAll({
       include: [
         { model: User, as: "user" }
-      ],
-      where: {
-        subbed_id: user_id
-      }
+      ]
+
     })
     
     const subs = data.map((sub) => sub.get({ plain: true }))
-    // console.log(subs)
+ 
     res.render('subs', { logged_in, subs });
     return;
   }
