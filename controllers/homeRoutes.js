@@ -40,7 +40,7 @@ router.get('/subs', withAuth, async (req, res) => {
     let data = await Sub.findAll({
       include: [
         { model: User, as: "user" }
-      ],    
+      ],
       where: {
         subbed_id: user_id
       }
