@@ -19,13 +19,13 @@ form.addEventListener("submit", (e)=> {
     // let cardDiv = document.createElement("div")
     // cardDiv.append(subcard)
     subcard.append()
-    
+    location.reload()
   })
   form[0].value = ""
   form[1].value = ""
   form[2].value = ""
   
-
+ 
 })
 
 remove.addEventListener("click", ()=>{
