@@ -6,13 +6,13 @@ router.get('/', async (req, res) => {
   try {
     let logged_in = req.session.logged_in
 
-    let data = await Sub.findAll({
+    let data = await Sub.find({
       include: [
         { model: User, as: "user" }
       ]
     })
 
-    res.render("homepage", { logged_in })
+    res.render("homepage", { logged_in, data })
   } catch (err) {
     res.status(500).json(err);
   }
@@ -35,12 +35,15 @@ router.get('/newuser', (req, res) => {
 
 router.get('/subs', withAuth, async (req, res) => {
   let logged_in = req.session.logged_in
+  let user_id = req.session.user_id
   if (req.session.logged_in) {
     let data = await Sub.findAll({
       include: [
         { model: User, as: "user" }
-      ]
-
+      ],
+      where: {
+        subbed_id: user_id
+      }
     })
     
     const subs = data.map((sub) => sub.get({ plain: true }))

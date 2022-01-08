@@ -33,17 +33,18 @@
 
 
 {{#each subs}}
-<div class="card" id="subcard">
+<div class="card subcard">
   <h5 class="card-header font-weight-bold">{{company}}</h5>
   <div class="card-body">
     <h5 class="card-title">Renews on the {{dayofmonth}}th of each month || Cost per month: ${{cost}}</h5> 
-    <button type="button" class="btn btn-danger" id="remove">Remove Subscription</button>
+    <button type="button" class="btn btn-danger remove">Remove Subscription</button>   
   </div>
 </div>
 {{/each}}
 
-<div id="total">
+{{!-- <div id="total">
     <h5 class="col-sm-6">Total per month: ${{summed}}</h5>
-</div>
+</div> --}}
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="./js/postsub.js"></script>

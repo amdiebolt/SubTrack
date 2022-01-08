@@ -1,8 +1,8 @@
 console.log("on posting JS")
 
 const form = document.querySelector("#newuser")
-const subcard = document.querySelector("#subcard")
-const remove = document.querySelector("#remove")
+const subcard = document.querySelector(".subcard")
+const remove = document.querySelector(".remove")
 console.log(form)
 
 form.addEventListener("submit", (e)=> { 
@@ -19,18 +19,20 @@ form.addEventListener("submit", (e)=> {
   }).then((res)=>res.json())
   .then((data)=>{
     console.log(data)
-    let cardDiv = document.createElement("div")
-    cardDiv.append(subcard)
+    // let cardDiv = document.createElement("div")
+    // cardDiv.append(subcard)
+    subcard.append()
+    
   })
 
   form[0].value = ""
   form[1].value = ""
   form[2].value = ""
+  
 
 })
 
-function deletesub() {
-  subcard.remove()
-}
+remove.addEventListener("click", ()=>{
+  subcard.remove();
+})
 
-remove.addEventListener("click", deletesub())
