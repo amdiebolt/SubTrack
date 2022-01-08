@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
       ]
     })
 
-    res.render("homepage", { logged_in, data })
+    res.render("homepage",)
   } catch (err) {
     res.status(500).json(err);
   }
