@@ -1,5 +1,5 @@
 const User = require('./User');
-const Sub = require('./Sub');
+const Sub = require('./sub');
 
 Sub.belongsTo(User, { 
   foreignKey: 'subbed_id'
