@@ -35,6 +35,7 @@ router.get('/newuser', (req, res) => {
 
 router.get('/subs', withAuth, async (req, res) => {
   let logged_in = req.session.logged_in
+  let user_id = req.session.user_id
   if (req.session.logged_in) {
     let data = await Sub.findAll({
       include: [
