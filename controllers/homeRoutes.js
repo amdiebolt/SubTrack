@@ -4,13 +4,13 @@ const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
-    let logged_in = req.session.logged_in
+    // let logged_in = req.session.logged_in
 
-    let data = await Sub.findAll({
-      include: [
-        { model: User, as: "user" }
-      ]
-    })
+    // let data = await Sub.findAll({
+    //   include: [
+    //     { model: User, as: "user" }
+    //   ]
+    // })
 
     res.render("homepage",)
   } catch (err) {
@@ -49,6 +49,7 @@ router.get('/subs', withAuth, async (req, res) => {
     const subs = data.map((sub) => sub.get({ plain: true }))
  
     res.render('subs', { logged_in, subs });
+    
     return;
   }
   else {
