@@ -41,8 +41,3 @@
   [![License](https://img.shields.io/badge/License--blue.svg)](https://opensource.org/licenses/)
 
   
-
-<a name ='questions'></a> 
-## Questions?
-  
-  Reach me on Github here: [](https://github.com/amdiebolt)
